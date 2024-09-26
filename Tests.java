@@ -1,18 +1,42 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Tests{
     private static boolean test1(){
         Cache cache = new Cache(3);
-        cache.query(1);
-        cache.query(2);
-        cache.query(3);
-        cache.query(1);
-        cache.query(2);
-        cache.query(4);
-        System.out.println(cache);
-        return cache.toString() == "{1=2, 2=2, 4=1}";
+        if(!(cache.query(1) == false && 
+             cache.query(2) == false &&
+             cache.query(3) == false &&
+             cache.query(1) == true && 
+             cache.query(2) == true &&
+             cache.query(4) == false)){
+            return false;
+        }
+        ArrayList<Integer> expected = new ArrayList<>(Arrays.asList(1,2,4));
+        if(!(cache.getCache()).equals(expected)){
+            return false;
+        }
+        return true;
     }
+
+    private static boolean test2(){
+        Cache cache = new Cache(0);
+        if(!(cache.query(1)==false)){
+            return false;
+        }
+        ArrayList<Integer> expected = new ArrayList<>(Arrays.asList());
+        if(!(cache.getCache()).equals(expected)){
+            return false;
+        }
+        return true;
+    }
+
     public static void main(String args[]){
         if(test1()){
-            System.out.println("test 1 pased");
+            System.out.println("test 1 passed");
+        }
+        if(test2()){
+            System.out.println("test 2 passed");
         }
     }
 }

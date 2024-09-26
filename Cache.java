@@ -1,5 +1,7 @@
 import java.util.HashMap;
 import java.util.TreeSet;
+import java.util.ArrayList;
+import java.util.Collections;
 
 class Cache{
     private TreeSet<MyPair> set = new TreeSet<MyPair>();
@@ -15,6 +17,9 @@ class Cache{
     }
 
     public boolean query(Integer q){
+        if(maxsize==0){
+            return false;
+        }
         Integer freq = map.get(q);
         if(freq!=null){
             MyPair old = new MyPair(freq, q);
@@ -40,10 +45,12 @@ class Cache{
         }
     }
 
-    public String toString(){
-        if(set==null){
-            return "empty cache";
+    public ArrayList<Integer> getCache(){
+        ArrayList<Integer> v = new ArrayList<>();
+        for(MyPair p : set){
+            v.add(p.val);
         }
-        return set.toString();
+        Collections.sort(v);
+        return v;
     }
 }
