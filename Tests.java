@@ -3,7 +3,7 @@ import java.util.Arrays;
 
 public class Tests{
     private static boolean test1(){
-        Cache cache = new Cache(3);
+        LFUCache cache = new LFUCache(3);
         if(!(cache.query(1) == false && 
              cache.query(2) == false &&
              cache.query(3) == false &&
@@ -20,7 +20,7 @@ public class Tests{
     }
 
     private static boolean test2(){
-        Cache cache = new Cache(0);
+        LFUCache cache = new LFUCache(0);
         if(!(cache.query(1)==false)){
             return false;
         }

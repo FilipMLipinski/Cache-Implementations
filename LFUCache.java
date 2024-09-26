@@ -3,7 +3,7 @@ import java.util.TreeSet;
 import java.util.ArrayList;
 import java.util.Collections;
 
-class Cache{
+class LFUCache{
     private TreeSet<MyPair> set = new TreeSet<MyPair>();
     private HashMap<Integer, Integer> map = new HashMap<Integer, Integer>(); 
     private Integer maxsize;
@@ -12,7 +12,7 @@ class Cache{
         System.out.println("hello cache");
     }
 
-    public Cache(Integer _maxsize){
+    public LFUCache(Integer _maxsize){
         maxsize = _maxsize;
     }
 
